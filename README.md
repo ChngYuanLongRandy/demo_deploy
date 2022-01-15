@@ -1,15 +1,15 @@
 # Contents
-1. [Name of Candidate](#1-name-of-candidate)
-2. [Overview of folder structure](#1-name-of-candidate)
-3. Running instructions
-4. Description of logical steps/ flow of pipeline
-5. Overview of Key findings in EDA and Pipeline, Feature Engineering Choices
-6. Model choices
-7. Evaluation choices
+1. [Name of Candidate](#name-of-candidate)
+2. [Overview of folder structure](#overview-of-folder-structure)
+3. [Running instructions](#running-instructions)
+4. [Description of logical steps/ flow of pipeline](#description-of-logical-steps/-flow-of-pipeline)
+5. [Overview of Key findings in EDA and Pipeline, Feature Engineering Choices](#overview-of-key-findings-in-eda-and-pipeline,-feature-engineering-choices)
+6. [Model choices](#model-choices)
+7. [Evaluation choices](#evaluation-choices)
 8. [Other Considerations](#other-considerations)
 
 ------------------------------
-## 1 - Name of Candidate
+## Name of Candidate
 ------------------------------
 
 Hi! My name is :
@@ -21,7 +21,7 @@ Email:
 >chngyuanlong@gmail.com
 
 ------------------------------
-## 2. Overview of folder structure
+## Overview of folder structure
 ------------------------------
 ### Folder structure:
 ```
@@ -92,7 +92,7 @@ predict.py (src/model)
 - predicts inputs using pipeline trained on data in data folder
 
 ------------------------------
-## 3. Running instructions
+## Running instructions
 ------------------------------
 You can run the application straight with either the bash script or from docker.
 Optionally, you may run tests or train the pipeline on data in the data folder or run lint tools on the code.
@@ -124,7 +124,7 @@ The streamlit should be available in your browser via
 ### Running optional tests
 
 ------------------------------
-## 4. Description of logical steps/ flow of pipeline
+## Description of logical steps/ flow of pipeline
 ------------------------------
 
 I imagine the user would like to test the application first. After that they might want to train the model on the data.
@@ -137,7 +137,7 @@ Train -> Ingest Data -> Preprocessing ->
 
 
 ------------------------------
-## 5. Overview of Key findings in EDA and Pipeline, Feature Engineering Choices
+## Overview of Key findings in EDA and Pipeline, Feature Engineering Choices
 ------------------------------
 The dataset contains a moderate amount of features with 150K observations. Numerical features are typically tail heavy with some features require cleaning or imputing. Likewise the categorical features require some cleaning as well. Most numerical features do no correlate with the target and with each other. 
 
@@ -146,7 +146,7 @@ As I think that domain knowledge is useful in feature engineering and I do not h
 The pipeline included median imputation of possible null values , bounding outliers within the distribution and the usual scaling or numerical features and one-hot encoding of categorical features. 
 
 ------------------------------
-## 6. Model choices
+## Model choices
 ------------------------------
 I used the following models
 - Logistic Regression (LOGREG)
@@ -172,7 +172,7 @@ LGBM is an ensemble model that improves on every iteration by adjusting to the r
 I intitally chose to use LGBM as it provided the highest score on all metrics with accuracy taking precedence. It is also the fastest to train. However when I was building the application I have some issues running the LGBM model so I used random forest instead as it is the runner up with the same scoring on all metrics just a tad bit slower when training.
 
 ------------------------------
-## 7. Evaluation choices
+## Evaluation choices
 ------------------------------
 As this is a classification problem, scores like recall, precision, accuracy, F1 score and the ROC AUC score are relevant.
 
