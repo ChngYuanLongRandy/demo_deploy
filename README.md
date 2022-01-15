@@ -11,7 +11,7 @@
 ------------------------------
 ## Name of Candidate
 ------------------------------
-[Back to content page](#back-to-content-page)
+[Back to content page](#contents)
 
 Hi! My name is :
 
@@ -25,7 +25,7 @@ Email:
 ## Overview of folder structure
 ------------------------------
 
-[Back to content page](#back-to-content-page)
+[Back to content page](#contents)
 
 ### Folder structure:
 ```
@@ -99,7 +99,7 @@ predict.py (src/model)
 ## Running instructions
 ------------------------------
 
-[Back to content page](#back-to-content-page)
+[Back to content page](#contents)
 
 You can run the application straight with either the bash script or from docker.
 Optionally, you may run tests or train the pipeline on data in the data folder or run lint tools on the code.
@@ -134,7 +134,7 @@ The streamlit should be available in your browser via
 ## Description of logical steps flow of pipeline
 ------------------------------
 
-[Back to content page](#back-to-content-page)
+[Back to content page](#contents)
 
 I imagine the user would like to test the application first. After that they might want to train the model on the data.
 
@@ -149,7 +149,7 @@ Train -> Ingest Data -> Preprocessing ->
 ## Overview of Key findings in EDA and Pipeline Feature Engineering Choices
 ------------------------------
 
-[Back to content page](#back-to-content-page)
+[Back to content page](#contents)
 
 The dataset contains a moderate amount of features with 150K observations. Numerical features are typically tail heavy with some features require cleaning or imputing. Likewise the categorical features require some cleaning as well. Most numerical features do no correlate with the target and with each other. 
 
@@ -161,7 +161,7 @@ The pipeline included median imputation of possible null values , bounding outli
 ## Model choices
 ------------------------------
 
-[Back to content page](#back-to-content-page)
+[Back to content page](#contents)
 
 I used the following models
 - Logistic Regression (LOGREG)
@@ -190,7 +190,7 @@ I intitally chose to use LGBM as it provided the highest score on all metrics wi
 ## Evaluation choices
 ------------------------------
 
-[Back to content page](#back-to-content-page)
+[Back to content page](#contents)
 
 As this is a classification problem, scores like recall, precision, accuracy, F1 score and the ROC AUC score are relevant.
 
@@ -200,7 +200,7 @@ The problem is about predicting the surival of a patient suffering from heart ar
 ## Other Considerations
 ------------------------------
 
-[Back to content page](#back-to-content-page)
+[Back to content page](#contents)
 
 This deployment is built with ease of use and maintenance in mind. 
 
