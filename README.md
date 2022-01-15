@@ -1,12 +1,12 @@
 # Contents
-1. Name of Candidate
-2. Overview of folder structure
+1. [Name of Candidate](#1-name-of-candidate)
+2. [Overview of folder structure](#1-name-of-candidate)
 3. Running instructions
 4. Description of logical steps/ flow of pipeline
 5. Overview of Key findings in EDA and Pipeline, Feature Engineering Choices
 6. Model choices
 7. Evaluation choices
-8. Other Considerations
+8. [Other Considerations](#other-considerations)
 
 ------------------------------
 ## 1 - Name of Candidate
@@ -32,9 +32,11 @@ AIAP
 |  run.sh
 |  Dockerfile
 |  eda.ipynb
-|
+|  tox.ini
+|  
 └──data
-|     survive.db
+|  survive.db
+|
 └──src
    |  main.py
    |  file012.txt
@@ -46,10 +48,13 @@ AIAP
    |     datamanager.py
    |
    └──tests
-   |     test-datamanager.py
-   |     test-predict.py
-   |     test-train_pipeline.py
-   |     test-pipeline.py
+   |     test_bound_outliers.py
+   |     test_load_from_database.py
+   |     test_pipeline.py
+   |     test_predict.py
+   |     test_preprocess_data.py
+   |     test_preprocess_input.py
+   |
    └──model
          pipeline.pkl
          pipeline.py
@@ -58,6 +63,7 @@ AIAP
 ```
 ### File Summary:
 Format: File (folder)
+- Usage
 
 main.py (src)
 - runs application
@@ -173,7 +179,7 @@ As this is a classification problem, scores like recall, precision, accuracy, F1
 The problem is about predicting the surival of a patient suffering from heart artery disease and I think between choosing a low false negative rate or a low false positive rate, a low false negative rate will take priority since the outcome of a false positive (predicted death when it is survive) is less disastrous than a false negative (predicted survive when it is death). The model should have high recall
 
 ------------------------------
-## 8. Other Considerations
+## Other Considerations
 ------------------------------
 This deployment is built with ease of use and maintenance in mind. 
 
