@@ -2,8 +2,8 @@
 1. [Name of Candidate](#name-of-candidate)
 2. [Overview of folder structure](#overview-of-folder-structure)
 3. [Running instructions](#running-instructions)
-4. [Description of logical steps/ flow of pipeline](#description-of-logical-steps/-flow-of-pipeline)
-5. [Overview of Key findings in EDA and Pipeline, Feature Engineering Choices](#overview-of-key-findings-in-eda-and-pipeline,-feature-engineering-choices)
+4. [Description of logical steps/ flow of pipeline](#description-of-logical-steps-flow-of-pipeline)
+5. [Overview of Key findings in EDA and Pipeline, Feature Engineering Choices](#overview-of-key-findings-in-eda-and-pipeline-feature-engineering-choices)
 6. [Model choices](#model-choices)
 7. [Evaluation choices](#evaluation-choices)
 8. [Other Considerations](#other-considerations)
@@ -11,6 +11,7 @@
 ------------------------------
 ## Name of Candidate
 ------------------------------
+[Back to content page](#back-to-content-page)
 
 Hi! My name is :
 
@@ -23,6 +24,9 @@ Email:
 ------------------------------
 ## Overview of folder structure
 ------------------------------
+
+[Back to content page](#back-to-content-page)
+
 ### Folder structure:
 ```
 AIAP
@@ -94,6 +98,9 @@ predict.py (src/model)
 ------------------------------
 ## Running instructions
 ------------------------------
+
+[Back to content page](#back-to-content-page)
+
 You can run the application straight with either the bash script or from docker.
 Optionally, you may run tests or train the pipeline on data in the data folder or run lint tools on the code.
 A trained pipeline named pipeline.pkl should already be included in the src/model folder.
@@ -124,8 +131,10 @@ The streamlit should be available in your browser via
 ### Running optional tests
 
 ------------------------------
-## Description of logical steps/ flow of pipeline
+## Description of logical steps flow of pipeline
 ------------------------------
+
+[Back to content page](#back-to-content-page)
 
 I imagine the user would like to test the application first. After that they might want to train the model on the data.
 
@@ -137,8 +146,11 @@ Train -> Ingest Data -> Preprocessing ->
 
 
 ------------------------------
-## Overview of Key findings in EDA and Pipeline, Feature Engineering Choices
+## Overview of Key findings in EDA and Pipeline Feature Engineering Choices
 ------------------------------
+
+[Back to content page](#back-to-content-page)
+
 The dataset contains a moderate amount of features with 150K observations. Numerical features are typically tail heavy with some features require cleaning or imputing. Likewise the categorical features require some cleaning as well. Most numerical features do no correlate with the target and with each other. 
 
 As I think that domain knowledge is useful in feature engineering and I do not have any medical knowledge, I tried to use polynomial transformation to see if any interactions between the numerical features will yield any strong correlation with the target however that is not the case. The only feature introduced is BMI and that appeared to be rather correlated to the target which is why it was kept.
@@ -148,6 +160,9 @@ The pipeline included median imputation of possible null values , bounding outli
 ------------------------------
 ## Model choices
 ------------------------------
+
+[Back to content page](#back-to-content-page)
+
 I used the following models
 - Logistic Regression (LOGREG)
 - Support Vector Machines (SVM)
@@ -174,6 +189,9 @@ I intitally chose to use LGBM as it provided the highest score on all metrics wi
 ------------------------------
 ## Evaluation choices
 ------------------------------
+
+[Back to content page](#back-to-content-page)
+
 As this is a classification problem, scores like recall, precision, accuracy, F1 score and the ROC AUC score are relevant.
 
 The problem is about predicting the surival of a patient suffering from heart artery disease and I think between choosing a low false negative rate or a low false positive rate, a low false negative rate will take priority since the outcome of a false positive (predicted death when it is survive) is less disastrous than a false negative (predicted survive when it is death). The model should have high recall
@@ -181,6 +199,9 @@ The problem is about predicting the surival of a patient suffering from heart ar
 ------------------------------
 ## Other Considerations
 ------------------------------
+
+[Back to content page](#back-to-content-page)
+
 This deployment is built with ease of use and maintenance in mind. 
 
 A couple of design choices are made to this end:
