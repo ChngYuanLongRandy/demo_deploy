@@ -40,15 +40,19 @@ def run_streamlit():
 
         bmi = (st_weight/ st_height/ st_height) * 10000
         inputs.append(bmi)
-        # st.write(inputs)
-        # st.write(type(inputs))
+        st.write(inputs)
         prediction = make_prediction_inputs(inputs)
+        predict_proba = make_prediction_inputs(inputs,proba=True)
         if prediction == 0:
+            st.write('Prediction is ' + strip_brackets(prediction) + " with probability " + strip_brackets(predict_proba[0][prediction]))
             st.write('Please see a doctor!')
         else:
+            st.write('Prediction is ' + strip_brackets(prediction) + " with probability " + strip_brackets(predict_proba[0][prediction]))
             st.write('Please keep up the healthy habits')
 
 
+def strip_brackets(_string : str) -> str:
+    return str(_string).replace('[','').replace(']','')
 
 if __name__ == '__main__':
     run_streamlit()
