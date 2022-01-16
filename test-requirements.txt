@@ -1,5 +1,7 @@
--r requirements
+-r requirements.txt
 
 black
 pytest
 flake8
+flake8-docstrings
+isort
