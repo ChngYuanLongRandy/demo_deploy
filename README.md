@@ -146,17 +146,27 @@ The streamlit should be available in your browser via
 
 [Back to content page](#contents)
 
+### Test
+
 I imagine the user would like to test the application first to make sure that everything is working. After that they might want to train the model on the data, or they may wish to use linting tools to assist in cleaning or spotting issues with the code. They may do all using the package tox.
+
+### Configuration
+
+This deployment is done in streamlit and all of the variables are stored in config.py in the config folder save for the default values. This goes with all of the other variables like pathing on so on. If they have any configuration to be done they can tweak them in the config.py file.
 
 ### Training Data
 
 > Train -> Ingest Data -> Preprocessing -> Train Pipeline -> Score -> Output Results
 
-Say they train the pipeline, the pipeline.py will call on config.py for variables, pipeline.py for the loading of pipeline, datamanager.py for loading and preprocessing of the data. The pipeline.py will train the pipeline on the data, score it and generate a txt file for the user to view the results.
+Say they train the pipeline, the pipeline.py will call on config.py for variables, pipeline.py for the loading of pipeline, datamanager.py for loading and preprocessing of the data. 
 
-This deployment is done in streamlit and all of the variables are stored in config.py in the config folder save for the default values. This goes with all of the other variables like pathing on so on. If they have any configuration to be done they can tweak them in the config.py file.
+The preprocessing phase will include all of the transformation that was done from the eda jupyter notebook. This includes imputation of missing values, bounding the outliers, replacing the invalid values from smoke, ejection fraction and other features. It will also add the BMI feature.
 
-After that they can run the application. The main.py contains the 
+The pipeline.py will train the pipeline on the data, score it and generate a txt file for the user to view the results. User can either run the train_pipeline.py file directly or call it from tox.
+
+### Run application
+
+After that they can run the application. The main.py contains the Streamlit UI for it and its filled with the default values provided by config.py. If the user clicks on the predict button, main.py will call predict.py which in turn will call on pipeline.py to load the pipeline and datamanager.py to preprocess the input.  Predict.py will generate both the prediction and the probability of the outcome. This will be displayed on the page. 
 
 
 
