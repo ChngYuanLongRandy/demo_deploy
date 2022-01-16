@@ -245,7 +245,7 @@ Tox allows me to run a couple of virtual environments and commands in a easy man
 
 Pytest allows me and any other users to ensure that the code is working properly. I have written pre-train and post-train test cases so that I can cover both the data and the functions in the model and the expected behavior of the model.
 
-Lint tools like black, isort and flake8 formats and flags out inconsistencies with the code in accordance with PEP8, docstrings and imports. I hope this improves readability and ease of use for other people using the application.
+Lint tools like black, isort and flake8 formats and flags out inconsistencies with the code, the docstrings and the imports in accordance with PEP8. I hope this improves readability and ease of use for other people using the application.
 
 The model is also containerised in docker so we can avoid the "it only runs on my machine" problem. This is done in the event that the bash script fails to run the application for some reason.
 
