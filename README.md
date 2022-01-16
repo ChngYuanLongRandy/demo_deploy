@@ -105,7 +105,7 @@ You can run the application straight with either the bash script or from docker.
 Optionally, you may run tests or train the pipeline on data in the data folder or run lint tools on the code with Tox.
 A trained pipeline named pipeline.pkl should already be included in the src/model folder.
 
-Default values are present on the application itself so that you can click on predict button at the end. If prediction is 0, message 'Please see a doctor!' will appear. Otherwise it will appear as 'Please keep up the healthy habits'.
+Default values are present on the application itself so that you can click on predict button at the end. If prediction is 0, message 'Please see a doctor!' will appear, otherwise it will appear as 'Please keep up the healthy habits'. Along with the message the predict class and the probability will appear as well. 
 
 The instructions below assumes a Windows OS
 
