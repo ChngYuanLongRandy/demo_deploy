@@ -102,14 +102,26 @@ predict.py (src/model)
 [Back to content page](#contents)
 
 You can run the application straight with either the bash script or from docker.
-Optionally, you may run tests or train the pipeline on data in the data folder or run lint tools on the code.
+Optionally, you may run tests or train the pipeline on data in the data folder or run lint tools on the code with Tox.
 A trained pipeline named pipeline.pkl should already be included in the src/model folder.
+
+### Tox
+
+I have 3 environments in tox (train_pipeline, pytest, lint) with each for specific function.
+You may run tox command like so in the root directory to run all 3 back to back
+
+> tox
+
+Or you can run a specific environment like so
+
+> tox -e pytest
 
 Default values are present on the application itself so that you can click on predict button at the end. If prediction is 0, message 'Please see a doctor!' will appear. Otherwise it will appear as 'Please keep up the healthy habits'.
 
 The instructions below assumes a Windows OS
 
 ### Running Main Application
+
 1. Bash Script: 
 
 Run bash script (run.sh) by double clicking it. Streamlit application should appear in your browser. 
@@ -128,21 +140,24 @@ The streamlit should be available in your browser via
 
    >localhost:8501
 
-### Running optional tests
-
 ------------------------------
 ## Description of logical steps flow of pipeline
 ------------------------------
 
 [Back to content page](#contents)
 
-I imagine the user would like to test the application first. After that they might want to train the model on the data.
+I imagine the user would like to test the application first to make sure that everything is working. After that they might want to train the model on the data, or they may wish to use linting tools to assist in cleaning or spotting issues with the code. They may do all using the package tox.
 
-They may do both using the package tox to test the application.
+### Training Data
 
-After that they can run the application. The application will then start by 
+> Train -> Ingest Data -> Preprocessing -> Train Pipeline -> Score -> Output Results
 
-Train -> Ingest Data -> Preprocessing -> 
+Say they train the pipeline, the pipeline.py will call on config.py for variables, pipeline.py for the loading of pipeline, datamanager.py for loading and preprocessing of the data. The pipeline.py will train the pipeline on the data, score it and generate a txt file for the user to view the results.
+
+This deployment is done in streamlit and all of the variables are stored in config.py in the config folder save for the default values. This goes with all of the other variables like pathing on so on. If they have any configuration to be done they can tweak them in the config.py file.
+
+After that they can run the application. The main.py contains the 
+
 
 
 ------------------------------
