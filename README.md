@@ -76,7 +76,7 @@ Config.py (src/config)
 - Tweak variables in config/config files
    - File paths
    - model specific objects (CV, test ratio, random seed, params for cross validation)
-   - Column names
+   - Data related like Column names, default values on streamlit UI
 
 Datamanager.py (src/Preprocessing)
 - loads pipeline, data
