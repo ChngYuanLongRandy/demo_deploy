@@ -1,18 +1,4 @@
 # Contents
-<<<<<<< HEAD
-1. Name of Candidate
-2. Overview of folder structure
-3. Running instructions
-4. Description of logical steps/ flow of pipeline
-5. Overview of Key findings in EDA and Pipeline, Feature Engineering Choices
-6. Model choices
-7. Evaluation choices
-8. Other Considerations
-
-------------------------------
-## 1 - Name of Candidate
-------------------------------
-=======
 1. [Name of Candidate](#name-of-candidate)
 2. [Overview of folder structure](#overview-of-folder-structure)
 3. [Running instructions](#running-instructions)
@@ -26,7 +12,6 @@
 ## Name of Candidate
 ------------------------------
 [Back to content page](#contents)
->>>>>>> 66d430aecc6c55e1c3d8e6005fd6edfd2edf7aa0
 
 Hi! My name is :
 
@@ -37,16 +22,11 @@ Email:
 >chngyuanlong@gmail.com
 
 ------------------------------
-<<<<<<< HEAD
-## 2. Overview of folder structure
-------------------------------
-=======
-## Overview of folder structure
+##  Overview of folder structure
 ------------------------------
 
 [Back to content page](#contents)
 
->>>>>>> 66d430aecc6c55e1c3d8e6005fd6edfd2edf7aa0
 ### Folder structure:
 ```
 AIAP
@@ -56,7 +36,6 @@ AIAP
 |  run.sh
 |  Dockerfile
 |  eda.ipynb
-<<<<<<< HEAD
 |
 └──data
 |     survive.db
@@ -66,7 +45,6 @@ AIAP
 └──data
 |  survive.db
 |
->>>>>>> 66d430aecc6c55e1c3d8e6005fd6edfd2edf7aa0
 └──src
    |  main.py
    |  file012.txt
@@ -78,12 +56,10 @@ AIAP
    |     datamanager.py
    |
    └──tests
-<<<<<<< HEAD
    |     test-datamanager.py
    |     test-predict.py
    |     test-train_pipeline.py
    |     test-pipeline.py
-=======
    |     test_bound_outliers.py
    |     test_load_from_database.py
    |     test_pipeline.py
@@ -91,7 +67,6 @@ AIAP
    |     test_preprocess_data.py
    |     test_preprocess_input.py
    |
->>>>>>> 66d430aecc6c55e1c3d8e6005fd6edfd2edf7aa0
    └──model
          pipeline.pkl
          pipeline.py
@@ -100,10 +75,7 @@ AIAP
 ```
 ### File Summary:
 Format: File (folder)
-<<<<<<< HEAD
-=======
 - Usage
->>>>>>> 66d430aecc6c55e1c3d8e6005fd6edfd2edf7aa0
 
 main.py (src)
 - runs application
@@ -112,11 +84,8 @@ Config.py (src/config)
 - Tweak variables in config/config files
    - File paths
    - model specific objects (CV, test ratio, random seed, params for cross validation)
-<<<<<<< HEAD
    - Column names
-=======
    - Data related like Column names, default values on streamlit UI
->>>>>>> 66d430aecc6c55e1c3d8e6005fd6edfd2edf7aa0
 
 Datamanager.py (src/Preprocessing)
 - loads pipeline, data
@@ -136,19 +105,6 @@ predict.py (src/model)
 - predicts inputs using pipeline trained on data in data folder
 
 ------------------------------
-<<<<<<< HEAD
-## 3. Running instructions
-------------------------------
-You can run the application straight with either the bash script or from docker.
-Optionally, you may run tests or train the pipeline on data in the data folder or run lint tools on the code.
-A trained pipeline named pipeline.pkl should already be included in the src/model folder.
-
-Default values are present on the application itself so that you can click on predict button at the end. If prediction is 0, message 'Please see a doctor!' will appear. Otherwise it will appear as 'Please keep up the healthy habits'.
-
-The instructions below assumes a Windows OS
-
-### Running Main Application
-=======
 ## Running instructions
 ------------------------------
 
@@ -176,7 +132,6 @@ Or you can run a specific environment like so
 
 ### Running Main Application
 
->>>>>>> 66d430aecc6c55e1c3d8e6005fd6edfd2edf7aa0
 1. Bash Script: 
 
 Run bash script (run.sh) by double clicking it. Streamlit application should appear in your browser. 
@@ -195,35 +150,6 @@ The streamlit should be available in your browser via
 
    >localhost:8501
 
-<<<<<<< HEAD
-### Running optional tests
-
-------------------------------
-## 4. Description of logical steps/ flow of pipeline
-------------------------------
-
-I imagine the user would like to test the application first. After that they might want to train the model on the data.
-
-They may do both using the package tox to test the application.
-
-After that they can run the application. The application will then start by 
-
-Train -> Ingest Data -> Preprocessing -> 
-
-
-------------------------------
-## 5. Overview of Key findings in EDA and Pipeline, Feature Engineering Choices
-------------------------------
-The dataset contains a moderate amount of features with 150K observations. Numerical features are typically tail heavy with some features require cleaning or imputing. Likewise the categorical features require some cleaning as well. Most numerical features do no correlate with the target and with each other. 
-
-As I think that domain knowledge is useful in feature engineering and I do not have any medical knowledge, I tried to use polynomial transformation to see if any interactions between the numerical features will yield any strong correlation with the target however that is not the case. The only feature introduced is BMI and that appeared to be rather correlated to the target which is why it was kept.
-
-The pipeline included median imputation of possible null values , bounding outliers within the distribution and the usual scaling or numerical features and one-hot encoding of categorical features. 
-
-------------------------------
-## 6. Model choices
-------------------------------
-=======
 ------------------------------
 ## Description of logical steps flow of pipeline
 ------------------------------
@@ -274,7 +200,6 @@ As I think that domain knowledge is useful in feature engineering and I do not h
 
 [Back to content page](#contents)
 
->>>>>>> 66d430aecc6c55e1c3d8e6005fd6edfd2edf7aa0
 I used the following models
 - Logistic Regression (LOGREG)
 - Support Vector Machines (SVM)
@@ -282,19 +207,6 @@ I used the following models
 - Random Forest (RF)
 - Light Gradient Boosting Machine (LGBM)
 
-<<<<<<< HEAD
-The models used to train were chosen based on how complex the models are, whether they are ensemble models or not and where it is instance or model based. I originally intended to compare the models on the validation data and then choose 1 to perform hyperparamter tunning to achieve better results. However the models happen to give me good results that I dont need to tune hyperparameters.
-
-Another selection criterion is also whether if there is any indication of overfitting on the data. Based on the training and test cross validation scores provided, I can see if a model is prone to overfit or not. If there is overfitting I can regularise the model or choose a less complex model. If there is underfitting I will choose a more complex model
-
-LOGREG is the simplest of them all being a linear model. A simple model has its usefulness however it is unable to fit well onto the data using the default values.
-
-SVM 
-
-KNN is an instance based model that does not have any algorithim but predicts based on distance of the training data to the new instances for predictions.
-
-RF is an ensemble model of decision trees which is prone to overfitting. Typically I will fit using default and then prune (regularise) the tree later.
-=======
 The models used to train were chosen based on how complex the models are, whether they are ensemble models or not and where it is instance or model based. I originally intended to compare the models on the validation data and then choose 1 to perform hyperparamter tunning to achieve better results. However the models happen to give me good results with the default values that I dont need to tune hyperparameters. 
 
 Another selection criterion is also whether if there is any indication of overfitting on the data. Based on the training and test cross validation scores provided, I can see if a model is prone to overfit or not. If there is overfitting I can regularise the model or choose a less complex model. If there is underfitting I will choose a more complex model
@@ -308,35 +220,12 @@ SVM is a very flexible model that allows me to reach both linear or polynominal 
 KNN is an instance based model that does not have any algorithim but predicts based on distance of the training data to the new instances for predictions.
 
 RF is an ensemble model of decision trees but it is prone to overfitting. Typically I will fit using default and then prune (regularise) the tree later. I like that the interpretation of the Tree is easy to understand.
->>>>>>> 66d430aecc6c55e1c3d8e6005fd6edfd2edf7aa0
 
 LGBM is an ensemble model that improves on every iteration by adjusting to the residual error of the previous iteration. My understanding is that the LGBM is a variant of XGBoost that is faster. XGBoost is itself a more regularised variant of Gradient Boosting machine.   
 
 I intitally chose to use LGBM as it provided the highest score on all metrics with accuracy taking precedence. It is also the fastest to train. However when I was building the application I have some issues running the LGBM model so I used random forest instead as it is the runner up with the same scoring on all metrics just a tad bit slower when training.
 
 ------------------------------
-<<<<<<< HEAD
-## 7. Evaluation choices
-------------------------------
-As this is a classification problem, scores like recall, precision, accuracy, F1 score and the ROC AUC score are relevant.
-
-The problem is about predicting the surival of a patient suffering from heart artery disease and I think between choosing a low false negative rate or a low false positive rate, a low false negative rate will take priority since the outcome of a false positive (predicted death when it is survive) is less disastrous than a false negative (predicted survive when it is death). The model should have high recall
-
-------------------------------
-## 8. Other Considerations
-------------------------------
-This deployment is built with ease of use and maintenance in mind. 
-
-A couple of design choices are made to this end:
-Tox allows me to run a couple of virtual environments and commands in a easy manner. With Tox, I can use pytest, run lint packages on the code and train the model on the training data.
-
-Pytest allows me and any other users to ensure that the code is working properly. I have written pre-train and post-train test cases so that I can cover both the data and the functions in the model and the behavior of the model.
-
-Lint tools like black, isort and flake8 formats and flags out inconsistencies with the code in accordance with PEP8.
-
-The model is also containerised in docker so we can avoid the "it only runs on my machine problem". This is done in the event that the bash script fails to run the application for some reason.
-
-=======
 ## Evaluation choices
 ------------------------------
 
@@ -378,4 +267,3 @@ The model is also containerised in docker so we can avoid the "it only runs on m
 Thank you for reading all the way to the end of the README! I hope that everything is according to your expectations.
 
 I had fun  practising what I have learnt especially the software engineering aspects of it. Many tutorials or courses on data science stops after you score the model! Thank you for allowing me to participate!
->>>>>>> 66d430aecc6c55e1c3d8e6005fd6edfd2edf7aa0
