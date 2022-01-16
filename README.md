@@ -36,18 +36,14 @@ AIAP
 |  run.sh
 |  Dockerfile
 |  eda.ipynb
+|  tox.ini
 |
 └──data
-|     survive.db
-=======
-|  tox.ini
-|  
-└──data
 |  survive.db
+|  sample_df.csv
 |
 └──src
    |  main.py
-   |  file012.txt
    │
    └──config
    |     config.py
@@ -74,8 +70,8 @@ AIAP
          train_pipeline.py
 ```
 ### File Summary:
-Format: File (folder)
-- Usage
+> Format: File (folder)
+> - Usage
 
 main.py (src)
 - runs application
