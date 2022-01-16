@@ -161,9 +161,9 @@ This deployment is done in streamlit and all of the variables are stored in conf
 
 > Train -> Ingest Data -> Preprocessing -> Train Pipeline -> Score -> Output Results
 
-Say they train the pipeline, the pipeline.py will call on config.py for variables, pipeline.py for the loading of pipeline, datamanager.py for loading and preprocessing of the data. 
+Say they train the pipeline, the pipeline.py will call on config.py for value of variables, pipeline.py for the loading of pipeline, datamanager.py for loading and preprocessing of the data. 
 
-The preprocessing phase will include all of the transformation that was done from the eda jupyter notebook. This includes imputation of missing values, bounding the outliers, replacing the invalid values from smoke, ejection fraction and other features. It will also add the BMI feature.
+The preprocessing phase will include all of the transformation that was done from the eda jupyter notebook. This includes imputation of missing values, bounding of the outliers, replacement of the invalid values from smoke, ejection fraction and other features. It will also add the BMI feature.
 
 The pipeline.py will train the pipeline on the data, score it and generate a txt file for the user to view the results. The resulting pipeline will be saved as a pickle file. User can either run the train_pipeline.py file directly or call it from tox.
 
