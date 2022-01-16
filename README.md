@@ -112,7 +112,7 @@ A trained pipeline named pipeline.pkl should already be included in the src/mode
 
 Default values are present on the application itself so that you can click on predict button at the end. If prediction is 0, message 'Please see a doctor!' will appear, otherwise it will appear as 'Please keep up the healthy habits'. Along with the message the predict class and the probability will appear as well. 
 
-The instructions below assumes a Windows OS
+The instructions below assumes a Windows OS with Python version 3.10.0
 
 ### Tox
 
