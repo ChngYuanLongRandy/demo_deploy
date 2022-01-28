@@ -2,7 +2,18 @@
 """Runs the application on streamlit."""
 
 import streamlit as st
-from src.config.config import ST_BP_DEFAULT,ST_HEMO_DEFAULT,ST_CK_DEFAULT,ST_HEIGHT_DEFAULT,ST_SODIUM_DEFAULT,ST_WEIGHT_DEFAULT,ST_PLETELETS_DEFAULT,ST_CREATININE_DEFAULT,ST_AGE_DEAFULT
+
+from src.config.config import (
+    ST_AGE_DEAFULT,
+    ST_BP_DEFAULT,
+    ST_CK_DEFAULT,
+    ST_CREATININE_DEFAULT,
+    ST_HEIGHT_DEFAULT,
+    ST_HEMO_DEFAULT,
+    ST_PLETELETS_DEFAULT,
+    ST_SODIUM_DEFAULT,
+    ST_WEIGHT_DEFAULT,
+)
 from src.model.predict import make_prediction_inputs
 
 
@@ -24,9 +35,15 @@ def run_streamlit():
     st_age = float(st.number_input("Age", value=ST_AGE_DEAFULT))
     st_ejection_fraction = str(st.radio("Ejection Fraction", ("Low", "Normal-High")))
     st_sodium = float(st.number_input("Sodium (mg/dL)", value=ST_SODIUM_DEFAULT))
-    st_creatinine = float(st.number_input("Creatinine (md/dL)", value=ST_CREATININE_DEFAULT))
-    st_pletelets = int(st.number_input("Pletelets (kilo-platelets/mL)", value=ST_PLETELETS_DEFAULT))
-    st_ck = int(st.number_input("Creatinine Phosphokinase (mcg/L)", value=ST_CK_DEFAULT))
+    st_creatinine = float(
+        st.number_input("Creatinine (md/dL)", value=ST_CREATININE_DEFAULT)
+    )
+    st_pletelets = int(
+        st.number_input("Pletelets (kilo-platelets/mL)", value=ST_PLETELETS_DEFAULT)
+    )
+    st_ck = int(
+        st.number_input("Creatinine Phosphokinase (mcg/L)", value=ST_CK_DEFAULT)
+    )
     st_bp = int(st.number_input("Blood pressure(mmHG)", value=ST_BP_DEFAULT))
     st_hemo = float(st.number_input("Hemoglobin (g/dL)", value=ST_HEMO_DEFAULT))
     st_height = int(st.number_input("Height in cm", value=ST_HEIGHT_DEFAULT))
@@ -52,7 +69,6 @@ def run_streamlit():
 
         bmi = (st_weight / st_height / st_height) * 10000
         inputs.append(bmi)
-        st.write(inputs)
         prediction = make_prediction_inputs(inputs)
         predict_proba = make_prediction_inputs(inputs, proba=True)
         if prediction == 0:

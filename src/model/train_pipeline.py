@@ -1,6 +1,7 @@
 """Contains functions regarding training of pipeline."""
 
 from time import time
+
 import joblib
 from sklearn.metrics import classification_report, roc_auc_score
 from sklearn.model_selection import GridSearchCV, cross_validate, train_test_split
