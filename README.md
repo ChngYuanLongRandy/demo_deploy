@@ -140,7 +140,7 @@ Please pull image by running command in terminal with docker running
 
 Once retrieved, please run command 
 
-   >docker run hashketh/aiap
+   >docker run -p 8501:8501 hashketh/aiap
 
 The streamlit should be available in your browser via 
 
