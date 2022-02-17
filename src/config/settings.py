@@ -1,6 +1,10 @@
 """Contains all of the constant variables used."""
 import os
 from pathlib import Path
+from pydantic import BaseModel
+
+# Version
+MODEL_VERSION = '0.0.0'
 
 # main folders
 CONFIG_PATH = os.path.dirname(__file__)  # aiap/src/config
@@ -49,6 +53,28 @@ ORI_FEATURES = [
         "Favorite color",
     ]
 ]
+
+RENAMED_FEATURES =[
+    [
+        "ID",
+        "Survive",
+        "Gender",
+        "Smoke",
+        "Diabetes",
+        "Age",
+        "Ejection_Fraction",
+        "Sodium",
+        "Creatinine",
+        "Pletelets",
+        "CK",
+        "BP",
+        "Hemoglobin",
+        "Height",
+        "Weight",
+        "Favorite color",
+    ]
+]
+
 TARGET = ["Survive"]
 CAT_FEATURES = ["Gender", "Smoke", "Diabetes", "Ejection Fraction"]
 ORI_NUM_FEATURES = [

@@ -5,7 +5,7 @@ import joblib
 import numpy as np
 import pandas as pd
 
-from src.config.config import TOTAL_FEATURES
+from src.config.settings import TOTAL_FEATURES, RENAMED_FEATURES
 
 
 def preprocess_input(inputs: list) -> pd.DataFrame:
@@ -28,6 +28,7 @@ def preprocess_data(df: pd.DataFrame) -> pd.DataFrame:
     :param df: list of input conforming with the columns of the database
     :return: Processed pandas dataframe
     """
+    df.columns = RENAMED_FEATURES
     df.drop(columns=["ID", "Favorite color"], inplace=True)
 
     bound_numerical_features(df)
@@ -35,11 +36,11 @@ def preprocess_data(df: pd.DataFrame) -> pd.DataFrame:
     df.Smoke = df.Smoke.replace("NO", "No")
     df.Smoke = df.Smoke.replace("YES", "Yes")
     df.Age = np.where(df.Age < 0, -df.Age, df.Age)
-    df["Ejection Fraction"] = (
-        df["Ejection Fraction"].replace("L", "Low").replace("N", "Normal")
+    df["Ejection_Fraction"] = (
+        df["Ejection_Fraction"].replace("L", "Low").replace("N", "Normal")
     )
-    df["Ejection Fraction"] = (
-        df["Ejection Fraction"]
+    df["Ejection_Fraction"] = (
+        df["Ejection_Fraction"]
         .replace("High", "Normal")
         .replace("Normal", "Normal-High")
     )
@@ -50,6 +51,7 @@ def preprocess_data(df: pd.DataFrame) -> pd.DataFrame:
     df["BMI"] = (df.Weight / df.Height / df.Height) * 10000
 
     return df
+
 
 
 def load_from_database(db_path: str) -> pd.DataFrame:

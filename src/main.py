@@ -3,7 +3,7 @@
 
 import streamlit as st
 
-from src.config.config import (
+from src.config.settings import (
     ST_AGE_DEAFULT,
     ST_BP_DEFAULT,
     ST_CK_DEFAULT,

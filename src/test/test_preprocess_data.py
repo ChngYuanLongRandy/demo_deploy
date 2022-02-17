@@ -1,7 +1,7 @@
 """test the preprocess data function from preprocessing datamanager.py."""
 import pandas as pd
 
-from src.config.config import SAMPLE_DATA_PATH
+from src.config.settings import SAMPLE_DATA_PATH
 from src.preprocessing.datamanager import preprocess_data
 
 sample_input = [

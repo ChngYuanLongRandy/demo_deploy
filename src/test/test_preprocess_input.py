@@ -2,7 +2,7 @@
 import numpy as np
 import pandas as pd
 
-from src.config.config import (
+from src.config.settings import (
     CAT_FEATURES,
     SAMPLE_DATA_PATH,
     TOTAL_FEATURES,

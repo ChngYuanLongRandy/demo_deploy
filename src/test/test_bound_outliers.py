@@ -1,7 +1,7 @@
 """test the bound outliers function."""
 import pandas as pd
 
-from src.config.config import ORI_NUM_FEATURES, SAMPLE_DATA_PATH
+from src.config.settings import ORI_NUM_FEATURES, SAMPLE_DATA_PATH
 from src.preprocessing.datamanager import bound_outliers, preprocess_data
 
 sample_data = pd.read_csv(SAMPLE_DATA_PATH)

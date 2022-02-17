@@ -1,7 +1,7 @@
 """Tests the load from database function."""
 import pandas as pd
 
-from src.config.config import DATABASE_PATH, SAMPLE_DATA_PATH, TOTAL_FEATURES_W_TARGET
+from src.config.settings import DATABASE_PATH, SAMPLE_DATA_PATH, TOTAL_FEATURES_W_TARGET
 from src.preprocessing.datamanager import load_from_database, preprocess_data
 
 sample_data = pd.read_csv(SAMPLE_DATA_PATH)

@@ -5,7 +5,7 @@ from sklearn.impute import SimpleImputer
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 
-from src.config.config import CAT_FEATURES, RANDOM_SEED, TOTAL_NUM_FEATURES
+from src.config.settings import CAT_FEATURES, RANDOM_SEED, TOTAL_NUM_FEATURES
 
 num_pipe = Pipeline(
     [("num_impute_median", SimpleImputer(strategy="median")), ("ss", StandardScaler())]

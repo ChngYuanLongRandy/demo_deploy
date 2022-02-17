@@ -6,7 +6,7 @@ import joblib
 from sklearn.metrics import classification_report, roc_auc_score
 from sklearn.model_selection import GridSearchCV, cross_validate, train_test_split
 
-from src.config.config import (
+from src.config.settings import (
     CV,
     DATABASE_PATH,
     LOG_OUTPUT_PATH,

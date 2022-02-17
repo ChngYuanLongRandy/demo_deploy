@@ -1,7 +1,7 @@
 """Contains function to return prediction of input."""
-from src.config.config import PIPELINE_PATH
+from src.config.settings import PIPELINE_PATH
 from src.preprocessing import datamanager
-
+#from src.preprocessing.validation import api_input_validation
 
 def make_prediction_inputs(input_data: list, proba=False) -> int:
     """
@@ -21,6 +21,8 @@ def make_prediction_inputs(input_data: list, proba=False) -> int:
     """
     survive_pipeline = datamanager.load_pipeline(PIPELINE_PATH)
     processed_input = datamanager.preprocess_input(input_data)
+
+
     if proba:
         prediction_proba = survive_pipeline.predict_proba(processed_input)
         return prediction_proba
