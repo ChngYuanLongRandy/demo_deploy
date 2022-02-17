@@ -1,10 +1,9 @@
 """Contains all of the constant variables used."""
+from typing import List, Dict
 import os
 from pathlib import Path
 from pydantic import BaseModel
-
-# Version
-MODEL_VERSION = '0.0.0'
+from strictyaml import YAML,load
 
 # main folders
 CONFIG_PATH = os.path.dirname(__file__)  # aiap/src/config
@@ -14,6 +13,7 @@ ROOT = Path(SRC_ROOT).parent  # aiap
 DATA_PATH = os.path.join(ROOT, "data")  # aiap/data
 MODEL_PATH = os.path.join(SRC_ROOT, "model")  # aiap/src/model
 PREPROCESSING_PATH = os.path.join(SRC_ROOT, "preprocessing")  # aiap/src/preprocessing
+CONFIG_FILE_PATH = os.path.join(ROOT,'config.yml') # aiap/config.yml
 
 # Objects
 DATABASE_PATH = os.path.join(DATA_PATH, "survive.db")  # aiap/data/survive.db
@@ -32,99 +32,96 @@ CV = 5
 TEST_RATIO = 0.2
 PARAMS = {}  # insert params configuration here
 
-# data base specific objects
-ORI_FEATURES = [
-    [
-        "ID",
-        "Survive",
-        "Gender",
-        "Smoke",
-        "Diabetes",
-        "Age",
-        "Ejection Fraction",
-        "Sodium",
-        "Creatinine",
-        "Pletelets",
-        "Creatinine phosphokinase",
-        "Blood Pressure",
-        "Hemoglobin",
-        "Height",
-        "Weight",
-        "Favorite color",
-    ]
-]
+class AppConfig(BaseModel):
+    """
+    Application-level config
+    """
 
-RENAMED_FEATURES =[
-    [
-        "ID",
-        "Survive",
-        "Gender",
-        "Smoke",
-        "Diabetes",
-        "Age",
-        "Ejection_Fraction",
-        "Sodium",
-        "Creatinine",
-        "Pletelets",
-        "CK",
-        "BP",
-        "Hemoglobin",
-        "Height",
-        "Weight",
-        "Favorite color",
-    ]
-]
+    package_name: str
+    pipeline_save_file : str
+    model_version: str
 
-TARGET = ["Survive"]
-CAT_FEATURES = ["Gender", "Smoke", "Diabetes", "Ejection Fraction"]
-ORI_NUM_FEATURES = [
-    "Sodium",
-    "Creatinine",
-    "Pletelets",
-    "Creatinine phosphokinase",
-    "Blood Pressure",
-    "Hemoglobin",
-    "Height",
-    "Weight",
-]
-TOTAL_NUM_FEATURES = [
-    "Age",
-    "Sodium",
-    "Creatinine",
-    "Pletelets",
-    "Creatinine phosphokinase",
-    "Blood Pressure",
-    "Hemoglobin",
-    "Height",
-    "Weight",
-    "BMI",
-]
+class ModelConfig(BaseModel):
+    """
+    Model-level config
+    """
+    # features....
+    target : str
+    features: List[str]
+    original_features : List[str]
+    renamed_features : List[str]
+    cat_features: List[str]
+    original_num_features: List[str]
+    total_features: list[str]
+    total_num_features: list[str]
 
-TOTAL_FEATURES = [
-    "Gender",
-    "Smoke",
-    "Diabetes",
-    "Age",
-    "Ejection Fraction",
-    "Sodium",
-    "Creatinine",
-    "Pletelets",
-    "Creatinine phosphokinase",
-    "Blood Pressure",
-    "Hemoglobin",
-    "Height",
-    "Weight",
-    "BMI",
-]
-TOTAL_FEATURES_W_TARGET = TARGET + TOTAL_FEATURES
+    # model...
+    model_name: str
+    test_size: float
+    random_state : int
 
-# streamlit-specific objects
-ST_AGE_DEAFULT = 21
-ST_SODIUM_DEFAULT = 120
-ST_CREATININE_DEFAULT = 0.2
-ST_PLETELETS_DEFAULT = 266000
-ST_CK_DEFAULT = 100
-ST_BP_DEFAULT = 105
-ST_HEMO_DEFAULT = 16.3
-ST_HEIGHT_DEFAULT = 185
-ST_WEIGHT_DEFAULT = 80
+class StreamlitConfig(BaseModel):
+    age: int
+    sodium: int
+    creatinine: float
+    pletelets: int
+    ck: int
+    bp: int
+    hemo: float
+    height: int
+    weight: int
+
+class mainConfig(BaseModel):
+    appConfig: AppConfig
+    modelConfig: ModelConfig
+    streamlitConfig: StreamlitConfig
+
+def locate_config_file() -> Path :
+    """
+    locates the config.yml file. If its missing will raise an error
+    :return: Path - Path of the config file
+    """
+    if Path(CONFIG_FILE_PATH).is_file():
+        return CONFIG_FILE_PATH
+    else:
+        raise Exception(f"Config file is not found at {CONFIG_FILE_PATH}")
+
+def load_config(cfg_path: Path = None) -> YAML:
+    """
+    Loads the config from the default path unless specified
+    :param cfg_path: Path object that specifies path of config.yml file
+    :return: YAML file
+    """
+    # default file
+    if cfg_path is None:
+        cfg_path = locate_config_file()
+
+    # custom config.yml file specified
+    if cfg_path:
+        try:
+            with open(cfg_path, "r") as f:
+                parsed_config = load(f.read())
+                return parsed_config
+        except:
+            raise OSError(f"Did not manage to find the config.yml file specified at {cfg_path}")
+
+
+def create_and_validate_config(parsed_config: YAML = None) -> mainConfig:
+    """
+    using the YAML file it will instantiate a config file
+    :param parsed_config: YAML file from config.yml
+    :return: mainConfig object
+    """
+    if parsed_config is None:
+        parsed_config = load_config()
+
+    _config = mainConfig(
+        appConfig=AppConfig(**parsed_config.data),
+        modelConfig=ModelConfig(**parsed_config.data),
+        streamlitConfig=StreamlitConfig(**parsed_config.data)
+    )
+
+    return _config
+
+
+config = create_and_validate_config()

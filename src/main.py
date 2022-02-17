@@ -3,17 +3,7 @@
 
 import streamlit as st
 
-from src.config.settings import (
-    ST_AGE_DEAFULT,
-    ST_BP_DEFAULT,
-    ST_CK_DEFAULT,
-    ST_CREATININE_DEFAULT,
-    ST_HEIGHT_DEFAULT,
-    ST_HEMO_DEFAULT,
-    ST_PLETELETS_DEFAULT,
-    ST_SODIUM_DEFAULT,
-    ST_WEIGHT_DEFAULT,
-)
+from src.config.settings import config
 from src.model.predict import make_prediction_inputs
 
 
@@ -32,22 +22,22 @@ def run_streamlit():
     st_diabetes = str(
         st.radio("Diabetic Condition?", ("Normal", "Pre-diabetes", "Diabetes"))
     )
-    st_age = float(st.number_input("Age", value=ST_AGE_DEAFULT))
+    st_age = float(st.number_input("Age", value=config.streamlitConfig.age))
     st_ejection_fraction = str(st.radio("Ejection Fraction", ("Low", "Normal-High")))
-    st_sodium = float(st.number_input("Sodium (mg/dL)", value=ST_SODIUM_DEFAULT))
+    st_sodium = float(st.number_input("Sodium (mg/dL)", value=config.streamlitConfig.sodium))
     st_creatinine = float(
-        st.number_input("Creatinine (md/dL)", value=ST_CREATININE_DEFAULT)
+        st.number_input("Creatinine (md/dL)", value=config.streamlitConfig.creatinine)
     )
     st_pletelets = int(
-        st.number_input("Pletelets (kilo-platelets/mL)", value=ST_PLETELETS_DEFAULT)
+        st.number_input("Pletelets (kilo-platelets/mL)", value=config.streamlitConfig.pletelets)
     )
     st_ck = int(
-        st.number_input("Creatinine Phosphokinase (mcg/L)", value=ST_CK_DEFAULT)
+        st.number_input("Creatinine Phosphokinase (mcg/L)", value=config.streamlitConfig.ck)
     )
-    st_bp = int(st.number_input("Blood pressure(mmHG)", value=ST_BP_DEFAULT))
-    st_hemo = float(st.number_input("Hemoglobin (g/dL)", value=ST_HEMO_DEFAULT))
-    st_height = int(st.number_input("Height in cm", value=ST_HEIGHT_DEFAULT))
-    st_weight = int(st.number_input("Weight in Kg", value=ST_WEIGHT_DEFAULT))
+    st_bp = int(st.number_input("Blood pressure(mmHG)", value=config.streamlitConfig.bp))
+    st_hemo = float(st.number_input("Hemoglobin (g/dL)", value=config.streamlitConfig.hemo))
+    st_height = int(st.number_input("Height in cm", value=config.streamlitConfig.height))
+    st_weight = int(st.number_input("Weight in Kg", value=config.streamlitConfig.weight))
 
     inputs = [
         st_gender,
@@ -64,6 +54,8 @@ def run_streamlit():
         st_height,
         st_weight,
     ]
+
+    #st.write(config.modelConfig.total_features)
 
     if st.button("Predict"):
 

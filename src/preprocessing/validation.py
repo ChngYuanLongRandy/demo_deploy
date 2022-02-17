@@ -21,7 +21,7 @@ class inputSchema(BaseModel):
     BMI : float # new feature
 
 class multiple_inputSchema(BaseModel):
-    inputs = List[inputSchema]
+    inputs : List[inputSchema]
 
 def api_input_validation(input_data : pd.DataFrame) ->[pd.DataFrame, Optional[dict]]:
     try:

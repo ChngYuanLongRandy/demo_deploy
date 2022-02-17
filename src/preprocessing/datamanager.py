@@ -5,7 +5,7 @@ import joblib
 import numpy as np
 import pandas as pd
 
-from src.config.settings import TOTAL_FEATURES, RENAMED_FEATURES
+from src.config.settings import config
 
 
 def preprocess_input(inputs: list) -> pd.DataFrame:
@@ -16,7 +16,7 @@ def preprocess_input(inputs: list) -> pd.DataFrame:
     :return: Pandas dataframe of the list
     """
     inputs = np.array(inputs).reshape(1, -1)
-    rename_cols = {k: v for k, v in zip(range(len(TOTAL_FEATURES)), TOTAL_FEATURES)}
+    rename_cols = {k: v for k, v in zip(range(len(config.modelConfig.total_features)), config.modelConfig.total_features)}
     df = pd.DataFrame(inputs).rename(columns=rename_cols)
     return df
 
@@ -28,7 +28,7 @@ def preprocess_data(df: pd.DataFrame) -> pd.DataFrame:
     :param df: list of input conforming with the columns of the database
     :return: Processed pandas dataframe
     """
-    df.columns = RENAMED_FEATURES
+    df.columns = config.modelConfig.renamed_features
     df.drop(columns=["ID", "Favorite color"], inplace=True)
 
     bound_numerical_features(df)
