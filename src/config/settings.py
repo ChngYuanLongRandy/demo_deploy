@@ -11,14 +11,14 @@ CONFIG_PATH = os.path.dirname(__file__)  # aiap/src/config
 SRC_ROOT = Path(CONFIG_PATH).parent  # aiap/src
 ROOT = Path(SRC_ROOT).parent  # aiap
 
-DATA_PATH = os.path.join(ROOT, "data")  # aiap/data
+DATA_PATH = os.path.join(SRC_ROOT, "data")  # aiap/data
 MODEL_PATH = os.path.join(SRC_ROOT, "model")  # aiap/src/model
 PREPROCESSING_PATH = os.path.join(SRC_ROOT, "preprocessing")  # aiap/src/preprocessing
-CONFIG_FILE_PATH = os.path.join(ROOT, "config.yml")  # aiap/config.yml
+CONFIG_FILE_PATH = os.path.join(CONFIG_PATH, "config.yml")  # aiap/src/configconfig.yml
 
 # Objects
 DATABASE_PATH = os.path.join(DATA_PATH, "survive.db")  # aiap/data/survive.db
-SAMPLE_DATA_PATH = os.path.join(DATA_PATH, "sample_df.csv")  # aiap/data/sample_df.csv
+SAMPLE_DATA_PATH = os.path.join(DATA_PATH, "sample_df.csv")  # data/sample_df.csv
 PIPELINE_NAME = "pipeline.pkl"
 PIPELINE_PATH = os.path.join(MODEL_PATH, PIPELINE_NAME)  # aiap/src/model/pipeline.pkl
 LOG_OUTPUT_NAME = "log_file.txt"
