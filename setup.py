@@ -5,16 +5,14 @@ from pathlib import Path
 
 from setuptools import find_packages, setup
 
-from src.config.settings import config
-
 # Package meta-data.
 NAME = "heart disease classification model"
 DESCRIPTION = "Classifying whether the patient will survive"
 URL = "https://github.com/ChngYuanLongRandy/demo_deploy"
 EMAIL = "chngyuanlong@gmail.com"
 AUTHOR = "RandyChng"
-REQUIRES_PYTHON = "=3.10.0"
-VERSION = config.appConfig.model_version
+REQUIRES_PYTHON = "==3.10.0"
+VERSION = "0.0.1"
 
 
 # The rest you shouldn't have to touch too much :)
