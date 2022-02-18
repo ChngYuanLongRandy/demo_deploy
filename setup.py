@@ -12,7 +12,7 @@ URL = "https://github.com/ChngYuanLongRandy/demo_deploy"
 EMAIL = "chngyuanlong@gmail.com"
 AUTHOR = "RandyChng"
 REQUIRES_PYTHON = "==3.10.0"
-VERSION = "0.0.6"
+VERSION = "0.0.7"
 
 
 # The rest you shouldn't have to touch too much :)
