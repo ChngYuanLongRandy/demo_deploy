@@ -33,6 +33,8 @@ def make_prediction_inputs(input_data: list, proba=False) -> int:
 def make_prediction_inputs_api(input_data: list, proba=False) -> dict:
     """
     Load pipeline and preprocess input from API then predict.
+    The inputs will be similar to what is in the original training set with
+    original features
 
     Parameters
     ----------
@@ -47,9 +49,9 @@ def make_prediction_inputs_api(input_data: list, proba=False) -> dict:
         Float: If proba is set to True, the probability of survival [0,1]
     """
     survive_pipeline = datamanager.load_pipeline(PIPELINE_PATH)
-    processed_input = datamanager.preprocess_input(input_data)
+    processed_input = datamanager.preprocess_data(input_data)
 
-    validated_input, errors = validation.api_input_validation((processed_input))
+    validated_input, errors = validation.api_input_validation(processed_input)
 
     results = {
         "Prediction": None,

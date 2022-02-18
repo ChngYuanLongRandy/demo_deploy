@@ -1,6 +1,7 @@
 include *.txt
 include *.md
 include *.pkl
+include config.yml
 
 exclude *.log
 exclude *.cfg
