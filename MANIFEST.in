@@ -3,8 +3,8 @@ include *.md
 include *.pkl
 include *.yml
 
-recursive-include Data *
-recursive-include config *
+recursive-include src/Data *
+recursive-include src/config *
 
 exclude Dockerfile
 exclude run.sh
