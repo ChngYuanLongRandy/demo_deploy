@@ -4,4 +4,6 @@ include *.pkl
 
 exclude *.log
 exclude *.cfg
+exclude Dockerfile
+exclude run.sh
 exclude eda.ipynb
