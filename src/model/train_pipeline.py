@@ -7,16 +7,11 @@ from sklearn.metrics import classification_report, roc_auc_score
 from sklearn.model_selection import GridSearchCV, cross_validate, train_test_split
 
 from src.config.settings import (
-    CV,
     DATABASE_PATH,
     LOG_OUTPUT_PATH,
-    MODEL_NAME,
     PARAMS,
     PIPELINE_PATH,
-    RANDOM_SEED,
-    TARGET,
-    TEST_RATIO,
-    TOTAL_FEATURES,
+    config,
 )
 from src.model.pipeline import survive_pipe_rfc
 from src.preprocessing import datamanager
@@ -32,16 +27,16 @@ def run_trainpipeline(gridsearch=False):
     df = datamanager.load_from_database(DATABASE_PATH)
 
     X_train, X_test, y_train, y_test = train_test_split(
-        df[TOTAL_FEATURES],
-        df[TARGET],
-        test_size=TEST_RATIO,
-        random_state=RANDOM_SEED,
+        df[config.modelConfig.total_features],
+        df[config.modelConfig.target],
+        test_size=config.modelConfig.test_size,
+        random_state=config.modelConfig.random_state,
     )
 
     if gridsearch:
         print("Gridsearch = True")
         try:
-            model = GridSearchCV(survive_pipe_rfc, PARAMS, cv=CV)
+            model = GridSearchCV(survive_pipe_rfc, PARAMS, cv=config.modelConfig.cv)
             score_pipeline(model, X_train, y_train, X_test, y_test)
             joblib.dump(model, PIPELINE_PATH)
         except Exception:
@@ -73,7 +68,7 @@ def score_pipeline(model, X_train, y_train, X_test, y_test):
         model,
         X_train,
         y_train,
-        cv=CV,
+        cv=config.modelConfig.cv,
         n_jobs=-1,
         return_train_score=True,
         scoring="accuracy",
@@ -96,7 +91,7 @@ def output_logfile(model, model_cv_score, y_test, y_pred, diff):
     """
     with open(LOG_OUTPUT_PATH, "w") as log_file:
         log_file.write("Log file for model results\n")
-        log_file.write("Model is " + MODEL_NAME + "\n")
+        log_file.write("Model is " + config.modelConfig.model_name + "\n")
         log_file.write(
             f"Classifcation report :\n{classification_report(y_test, y_pred)}" + "\n"
         )

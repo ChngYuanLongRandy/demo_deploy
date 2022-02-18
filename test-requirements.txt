@@ -1,7 +1,10 @@
 -r requirements.txt
 
-black
+# testing requirements
 pytest
+
+# repo maintenance tooling
+black
 flake8
-flake8-docstrings
+mypy
 isort

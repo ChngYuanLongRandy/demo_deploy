@@ -2,6 +2,7 @@
 from src.config.settings import PIPELINE_PATH, config
 from src.preprocessing import datamanager, validation
 
+
 def make_prediction_inputs(input_data: list, proba=False) -> int:
     """
     Load pipeline and preprocess input then predict.
@@ -20,7 +21,6 @@ def make_prediction_inputs(input_data: list, proba=False) -> int:
     """
     survive_pipeline = datamanager.load_pipeline(PIPELINE_PATH)
     processed_input = datamanager.preprocess_input(input_data)
-
 
     if proba:
         prediction_proba = survive_pipeline.predict_proba(processed_input)
@@ -51,14 +51,18 @@ def make_prediction_inputs_api(input_data: list, proba=False) -> dict:
 
     validated_input, errors = validation.api_input_validation((processed_input))
 
-    results = {"Prediction": None,"Version": config.appConfig.model_version,"Errors":errors }
+    results = {
+        "Prediction": None,
+        "Version": config.appConfig.model_version,
+        "Errors": errors,
+    }
 
     if errors is not None:
         if proba:
             prediction_proba = survive_pipeline.predict_proba(validated_input)
-            results['Prediction'] = prediction_proba
+            results["Prediction"] = prediction_proba
         else:
             prediction = survive_pipeline.predict(validated_input)
-            results['Prediction'] = prediction
+            results["Prediction"] = prediction
 
     return results

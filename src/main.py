@@ -24,20 +24,34 @@ def run_streamlit():
     )
     st_age = float(st.number_input("Age", value=config.streamlitConfig.age))
     st_ejection_fraction = str(st.radio("Ejection Fraction", ("Low", "Normal-High")))
-    st_sodium = float(st.number_input("Sodium (mg/dL)", value=config.streamlitConfig.sodium))
+    st_sodium = float(
+        st.number_input("Sodium (mg/dL)", value=config.streamlitConfig.sodium)
+    )
     st_creatinine = float(
         st.number_input("Creatinine (md/dL)", value=config.streamlitConfig.creatinine)
     )
     st_pletelets = int(
-        st.number_input("Pletelets (kilo-platelets/mL)", value=config.streamlitConfig.pletelets)
+        st.number_input(
+            "Pletelets (kilo-platelets/mL)", value=config.streamlitConfig.pletelets
+        )
     )
     st_ck = int(
-        st.number_input("Creatinine Phosphokinase (mcg/L)", value=config.streamlitConfig.ck)
+        st.number_input(
+            "Creatinine Phosphokinase (mcg/L)", value=config.streamlitConfig.ck
+        )
     )
-    st_bp = int(st.number_input("Blood pressure(mmHG)", value=config.streamlitConfig.bp))
-    st_hemo = float(st.number_input("Hemoglobin (g/dL)", value=config.streamlitConfig.hemo))
-    st_height = int(st.number_input("Height in cm", value=config.streamlitConfig.height))
-    st_weight = int(st.number_input("Weight in Kg", value=config.streamlitConfig.weight))
+    st_bp = int(
+        st.number_input("Blood pressure(mmHG)", value=config.streamlitConfig.bp)
+    )
+    st_hemo = float(
+        st.number_input("Hemoglobin (g/dL)", value=config.streamlitConfig.hemo)
+    )
+    st_height = int(
+        st.number_input("Height in cm", value=config.streamlitConfig.height)
+    )
+    st_weight = int(
+        st.number_input("Weight in Kg", value=config.streamlitConfig.weight)
+    )
 
     inputs = [
         st_gender,
@@ -55,7 +69,7 @@ def run_streamlit():
         st_weight,
     ]
 
-    #st.write(config.modelConfig.total_features)
+    # st.write(config.modelConfig.total_features)
 
     if st.button("Predict"):
 

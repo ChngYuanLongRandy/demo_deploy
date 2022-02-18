@@ -2,12 +2,7 @@
 import numpy as np
 import pandas as pd
 
-from src.config.settings import (
-    CAT_FEATURES,
-    SAMPLE_DATA_PATH,
-    TOTAL_FEATURES,
-    TOTAL_NUM_FEATURES,
-)
+from src.config.settings import SAMPLE_DATA_PATH, config
 from src.preprocessing.datamanager import preprocess_data, preprocess_input
 
 sample_data = pd.read_csv(SAMPLE_DATA_PATH)
@@ -38,10 +33,10 @@ def test_preprocess_input():
     :return: None
     """
     processed_inputs = preprocess_input(sample_input)
-    assert processed_inputs.columns.to_list() == TOTAL_FEATURES
-    assert processed_inputs.shape[1] == len(TOTAL_FEATURES)
-    for feature in CAT_FEATURES:
+    assert processed_inputs.columns.to_list() == config.modelConfig.total_features
+    assert processed_inputs.shape[1] == len(config.modelConfig.total_features)
+    for feature in config.modelConfig.cat_features:
         assert processed_inputs[feature].dtypes is np.dtype(object)
 
-    for feature in TOTAL_NUM_FEATURES:
+    for feature in config.modelConfig.total_num_features:
         assert processed_inputs[feature].dtypes is float or int

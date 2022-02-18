@@ -16,7 +16,13 @@ def preprocess_input(inputs: list) -> pd.DataFrame:
     :return: Pandas dataframe of the list
     """
     inputs = np.array(inputs).reshape(1, -1)
-    rename_cols = {k: v for k, v in zip(range(len(config.modelConfig.total_features)), config.modelConfig.total_features)}
+    rename_cols = {
+        k: v
+        for k, v in zip(
+            range(len(config.modelConfig.total_features)),
+            config.modelConfig.total_features,
+        )
+    }
     df = pd.DataFrame(inputs).rename(columns=rename_cols)
     return df
 
@@ -28,7 +34,6 @@ def preprocess_data(df: pd.DataFrame) -> pd.DataFrame:
     :param df: list of input conforming with the columns of the database
     :return: Processed pandas dataframe
     """
-    df.columns = config.modelConfig.renamed_features
     df.drop(columns=["ID", "Favorite color"], inplace=True)
 
     bound_numerical_features(df)
@@ -36,11 +41,11 @@ def preprocess_data(df: pd.DataFrame) -> pd.DataFrame:
     df.Smoke = df.Smoke.replace("NO", "No")
     df.Smoke = df.Smoke.replace("YES", "Yes")
     df.Age = np.where(df.Age < 0, -df.Age, df.Age)
-    df["Ejection_Fraction"] = (
-        df["Ejection_Fraction"].replace("L", "Low").replace("N", "Normal")
+    df["Ejection Fraction"] = (
+        df["Ejection Fraction"].replace("L", "Low").replace("N", "Normal")
     )
-    df["Ejection_Fraction"] = (
-        df["Ejection_Fraction"]
+    df["Ejection Fraction"] = (
+        df["Ejection Fraction"]
         .replace("High", "Normal")
         .replace("Normal", "Normal-High")
     )
@@ -51,7 +56,6 @@ def preprocess_data(df: pd.DataFrame) -> pd.DataFrame:
     df["BMI"] = (df.Weight / df.Height / df.Height) * 10000
 
     return df
-
 
 
 def load_from_database(db_path: str) -> pd.DataFrame:

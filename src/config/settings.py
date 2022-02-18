@@ -1,9 +1,10 @@
 """Contains all of the constant variables used."""
-from typing import List, Dict
 import os
 from pathlib import Path
+from typing import List
+
 from pydantic import BaseModel
-from strictyaml import YAML,load
+from strictyaml import YAML, load
 
 # main folders
 CONFIG_PATH = os.path.dirname(__file__)  # aiap/src/config
@@ -13,7 +14,7 @@ ROOT = Path(SRC_ROOT).parent  # aiap
 DATA_PATH = os.path.join(ROOT, "data")  # aiap/data
 MODEL_PATH = os.path.join(SRC_ROOT, "model")  # aiap/src/model
 PREPROCESSING_PATH = os.path.join(SRC_ROOT, "preprocessing")  # aiap/src/preprocessing
-CONFIG_FILE_PATH = os.path.join(ROOT,'config.yml') # aiap/config.yml
+CONFIG_FILE_PATH = os.path.join(ROOT, "config.yml")  # aiap/config.yml
 
 # Objects
 DATABASE_PATH = os.path.join(DATA_PATH, "survive.db")  # aiap/data/survive.db
@@ -26,11 +27,8 @@ LOG_OUTPUT_PATH = os.path.join(
 )  # aiap/src/model/log_file.txt
 
 # model specific objects
-MODEL_NAME = "Random Forest"
-RANDOM_SEED = 42
-CV = 5
-TEST_RATIO = 0.2
 PARAMS = {}  # insert params configuration here
+
 
 class AppConfig(BaseModel):
     """
@@ -38,27 +36,34 @@ class AppConfig(BaseModel):
     """
 
     package_name: str
-    pipeline_save_file : str
+    pipeline_save_file: str
     model_version: str
+
 
 class ModelConfig(BaseModel):
     """
     Model-level config
     """
+
     # features....
-    target : str
+    target: str
     features: List[str]
-    original_features : List[str]
-    renamed_features : List[str]
+    original_features: List[str]
+    renamed_features: List[str]
     cat_features: List[str]
     original_num_features: List[str]
     total_features: list[str]
     total_num_features: list[str]
+    total_features_with_target: List[str]
 
     # model...
     model_name: str
     test_size: float
-    random_state : int
+    random_state: int
+    cv: int
+    random_state: int
+    model_name: str
+
 
 class StreamlitConfig(BaseModel):
     age: int
@@ -71,12 +76,14 @@ class StreamlitConfig(BaseModel):
     height: int
     weight: int
 
+
 class mainConfig(BaseModel):
     appConfig: AppConfig
     modelConfig: ModelConfig
     streamlitConfig: StreamlitConfig
 
-def locate_config_file() -> Path :
+
+def locate_config_file() -> Path:
     """
     locates the config.yml file. If its missing will raise an error
     :return: Path - Path of the config file
@@ -85,6 +92,7 @@ def locate_config_file() -> Path :
         return CONFIG_FILE_PATH
     else:
         raise Exception(f"Config file is not found at {CONFIG_FILE_PATH}")
+
 
 def load_config(cfg_path: Path = None) -> YAML:
     """
@@ -102,8 +110,10 @@ def load_config(cfg_path: Path = None) -> YAML:
             with open(cfg_path, "r") as f:
                 parsed_config = load(f.read())
                 return parsed_config
-        except:
-            raise OSError(f"Did not manage to find the config.yml file specified at {cfg_path}")
+        except OSError:
+            raise OSError(
+                f"Did not manage to find the config.yml file specified at {cfg_path}"
+            )
 
 
 def create_and_validate_config(parsed_config: YAML = None) -> mainConfig:
@@ -118,7 +128,7 @@ def create_and_validate_config(parsed_config: YAML = None) -> mainConfig:
     _config = mainConfig(
         appConfig=AppConfig(**parsed_config.data),
         modelConfig=ModelConfig(**parsed_config.data),
-        streamlitConfig=StreamlitConfig(**parsed_config.data)
+        streamlitConfig=StreamlitConfig(**parsed_config.data),
     )
 
     return _config

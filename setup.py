@@ -2,11 +2,13 @@
 # -*- coding: utf-8 -*-
 
 from pathlib import Path
-from src.config.settings import config
+
 from setuptools import find_packages, setup
 
+from src.config.settings import config
+
 # Package meta-data.
-NAME = 'heart disease classification model'
+NAME = "heart disease classification model"
 DESCRIPTION = "Classifying whether the patient will survive"
 URL = "https://github.com/ChngYuanLongRandy/demo_deploy"
 EMAIL = "chngyuanlong@gmail.com"
@@ -20,12 +22,14 @@ VERSION = config.appConfig.model_version
 # Except, perhaps the License and Trove Classifiers!
 # If you do change the License, remember to change the
 # Trove Classifier for that!
-with open('README.md', 'r') as f:
+with open("README.md", "r") as f:
     long_description = f.read()
+
 
 def list_reqs(fname="requirements.txt"):
     with open(fname) as fd:
         return fd.read().splitlines()
+
 
 # Where the magic happens:
 setup(

@@ -6,9 +6,20 @@
   <component name="ChangeListManager">
     <list default="true" id="3e24c046-d173-4810-9848-8dea4770bf65" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MANIFEST.in" beforeDir="false" afterPath="$PROJECT_DIR$/MANIFEST.in" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/log_file.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/log_file.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/predict.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/predict.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/train_pipeline.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/train_pipeline.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/preprocessing/datamanager.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/preprocessing/datamanager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/preprocessing/validation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/preprocessing/validation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/test_bound_outliers.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/test_bound_outliers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/test_load_from_database.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/test_load_from_database.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/test_preprocess_input.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/test_preprocess_input.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/test-requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,6 +84,11 @@
           <url>file://$PROJECT_DIR$/src/model/predict.py</url>
           <line>1</line>
           <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/test/test_bound_outliers.py</url>
+          <line>1</line>
+          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
