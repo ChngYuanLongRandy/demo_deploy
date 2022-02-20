@@ -58,6 +58,34 @@ def preprocess_data(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 
+def preprocess_data_fromapi(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Preprocess inputs from database file.
+
+    :param df: list of input conforming with the columns of the database
+    :return: Processed pandas dataframe
+    """
+    df.drop(columns=["ID", "Favorite color"], inplace=True)
+
+    bound_numerical_features(df)
+
+    df.Smoke = df.Smoke.replace("NO", "No")
+    df.Smoke = df.Smoke.replace("YES", "Yes")
+    df.Age = np.where(df.Age < 0, -df.Age, df.Age)
+    df["Ejection Fraction"] = (
+        df["Ejection Fraction"].replace("L", "Low").replace("N", "Normal")
+    )
+    df["Ejection Fraction"] = (
+        df["Ejection Fraction"]
+        .replace("High", "Normal")
+        .replace("Normal", "Normal-High")
+    )
+
+    df["BMI"] = (df.Weight / df.Height / df.Height) * 10000
+
+    return df
+
+
 def load_from_database(db_path: str) -> pd.DataFrame:
     """
     Load up the database into a pandas dataframe and returns it.

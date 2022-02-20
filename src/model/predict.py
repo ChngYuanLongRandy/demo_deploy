@@ -49,7 +49,7 @@ def make_prediction_inputs_api(input_data: list, proba=False) -> dict:
         Float: If proba is set to True, the probability of survival [0,1]
     """
     survive_pipeline = datamanager.load_pipeline(PIPELINE_PATH)
-    processed_input = datamanager.preprocess_data(input_data)
+    processed_input = datamanager.preprocess_data_fromapi(input_data)
 
     validated_input, errors = validation.api_input_validation(processed_input)
 
@@ -59,7 +59,7 @@ def make_prediction_inputs_api(input_data: list, proba=False) -> dict:
         "Errors": errors,
     }
 
-    if errors is not None:
+    if errors is None:
         if proba:
             prediction_proba = survive_pipeline.predict_proba(validated_input)
             results["Prediction"] = prediction_proba

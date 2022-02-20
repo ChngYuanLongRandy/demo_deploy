@@ -16,4 +16,4 @@ Average CV test acc score :
  0.9998333333333334 
 ROC AUC score :
  0.9987447115394258
-Seconds taken to run results is 3.2350056171417236
+Seconds taken to run results is 3.4651544094085693
