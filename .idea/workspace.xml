@@ -5,12 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3e24c046-d173-4810-9848-8dea4770bf65" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/test_predict_api.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/test_predict_api_dict.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/log_file.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/log_file.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/predict.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/predict.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/preprocessing/datamanager.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/preprocessing/datamanager.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/preprocessing/validation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/preprocessing/validation.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,6 +37,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/test" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -79,7 +78,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/model/predict.py</url>
-          <line>1</line>
+          <line>3</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
