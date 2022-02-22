@@ -1,6 +1,6 @@
 # Package Overview
 package_name: heart disease classification model
-model_version: 0.0.10
+model_version: 0.0.11
 pipeline_name: classification_pipeline
 pipeline_save_file: classification_pipeline_output
 

@@ -8,18 +8,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/config/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/config.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/log_file.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/log_file.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/pipeline.pkl" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/pipeline.pkl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/predict.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/predict.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/train_pipeline.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/train_pipeline.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/preprocessing/datamanager.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/preprocessing/datamanager.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/preprocessing/validation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/preprocessing/validation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/test_bound_outliers.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/test_bound_outliers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/test_load_from_database.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/test_load_from_database.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/test_pipline.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/test_pipline.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/test_predict_api_dict.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/test_predict_api_dict.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/test_preprocess_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/test_preprocess_data.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/test_preprocess_input.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/test_preprocess_input.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
