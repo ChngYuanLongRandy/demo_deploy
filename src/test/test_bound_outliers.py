@@ -5,6 +5,8 @@ from src.config.settings import SAMPLE_DATA_PATH, config
 from src.preprocessing.datamanager import bound_outliers, preprocess_data
 
 sample_data = pd.read_csv(SAMPLE_DATA_PATH)
+sample_data = sample_data.iloc[:,1:]
+print(f"Columns of sample_data is {sample_data.columns}")
 processed_sample_data = preprocess_data(sample_data)
 
 

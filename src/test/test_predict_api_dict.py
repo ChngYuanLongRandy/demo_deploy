@@ -1,7 +1,6 @@
 """Tests the predict api function in predict.py whether if it generates a prediction that is in
 lined with expectations"""
 import numpy as np
-import pandas as pd
 
 from src.model.predict import make_prediction_inputs_api_dict
 
@@ -11,7 +10,7 @@ sample_input = {
     "Smoke": "Yes",
     "Diabetes": "Normal",
     "Age": 50,
-    "Ejection Fraction": "Low",
+    "Ejection_Fraction": "Low",
     "Sodium": 141,
     "Creatinine": 0.7,
     "Pletelets": 266000,

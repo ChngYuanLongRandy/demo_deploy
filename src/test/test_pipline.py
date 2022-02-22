@@ -14,6 +14,7 @@ def test_pipeline():
     :return: None
     """
     sample_data = pd.read_csv(SAMPLE_DATA_PATH)
+    sample_data = sample_data.iloc[:, 1:]
     processed_sample_data = preprocess_data(sample_data)
 
     transformed_processed_sample_data = transform_pipe.fit_transform(

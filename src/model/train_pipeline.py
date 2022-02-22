@@ -24,8 +24,10 @@ def run_trainpipeline(gridsearch=False):
     :param gridsearch: Bol True to run gridsearch on pipeline
     :return: None
     """
+    print("Entering run_trainpipeline function")
     df = datamanager.load_from_database(DATABASE_PATH)
 
+    print("Entering split dataset")
     X_train, X_test, y_train, y_test = train_test_split(
         df[config.modelConfig.total_features],
         df[config.modelConfig.target],

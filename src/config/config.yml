@@ -1,6 +1,6 @@
 # Package Overview
 package_name: heart disease classification model
-model_version: 0.0.9
+model_version: 0.0.10
 pipeline_name: classification_pipeline
 pipeline_save_file: classification_pipeline_output
 
@@ -40,12 +40,12 @@ features:
   - Smoke
   - Diabetes
   - Age
-  - Ejection Fraction # renamed
+  - Ejection_Fraction # renamed
   - Sodium
   - Creatinine
   - Pletelets
-  - Creatinine phosphokinase #renamed
-  - Blood Pressure #renamed
+  - CK #renamed
+  - BP #renamed
   - Hemoglobin
   - Height
   - Weight
@@ -83,12 +83,12 @@ renamed_features:
   - Smoke
   - Diabetes
   - Age
-  - Ejection Fraction
+  - Ejection_Fraction
   - Sodium
   - Creatinine
   - Pletelets
-  - Creatinine phosphokinase
-  - Blood Pressure
+  - CK
+  - BP
   - Hemoglobin
   - Height
   - Weight
@@ -99,15 +99,15 @@ cat_features:
   - Gender
   - Smoke
   - Diabetes
-  - Ejection Fraction
+  - Ejection_Fraction
 
 
 original_num_features:
   - Sodium
   - Creatinine
   - Pletelets
-  - Creatinine phosphokinase
-  - Blood Pressure
+  - CK
+  - BP
   - Hemoglobin
   - Height
   - Weight
@@ -117,8 +117,8 @@ total_num_features:
   - Sodium
   - Creatinine
   - Pletelets
-  - Creatinine phosphokinase
-  - Blood Pressure
+  - CK
+  - BP
   - Hemoglobin
   - Height
   - Weight
@@ -129,12 +129,12 @@ total_features:
   - Smoke
   - Diabetes
   - Age
-  - Ejection Fraction
+  - Ejection_Fraction
   - Sodium
   - Creatinine
   - Pletelets
-  - Creatinine phosphokinase
-  - Blood Pressure
+  - CK
+  - BP
   - Hemoglobin
   - Height
   - Weight
@@ -146,12 +146,12 @@ total_features_with_target:
   - Smoke
   - Diabetes
   - Age
-  - Ejection Fraction
+  - Ejection_Fraction
   - Sodium
   - Creatinine
   - Pletelets
-  - Creatinine phosphokinase
-  - Blood Pressure
+  - CK
+  - BP
   - Hemoglobin
   - Height
   - Weight

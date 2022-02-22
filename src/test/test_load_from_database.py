@@ -5,6 +5,7 @@ from src.config.settings import DATABASE_PATH, SAMPLE_DATA_PATH, config
 from src.preprocessing.datamanager import load_from_database, preprocess_data
 
 sample_data = pd.read_csv(SAMPLE_DATA_PATH)
+sample_data = sample_data.iloc[:,1:]
 processed_sample_data = preprocess_data(sample_data)
 
 sample_input = [
@@ -32,7 +33,7 @@ def test_load_from_database():
     :return: None
     """
     sample_database = load_from_database(DATABASE_PATH)
-
+    print(f"sample_database.columns.to_list() is \n{sample_database.columns.to_list()}")
     assert (
         sample_database.columns.to_list()
         == config.modelConfig.total_features_with_target

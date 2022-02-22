@@ -6,6 +6,7 @@ from src.config.settings import SAMPLE_DATA_PATH, config
 from src.preprocessing.datamanager import preprocess_data, preprocess_input
 
 sample_data = pd.read_csv(SAMPLE_DATA_PATH)
+sample_data = sample_data.iloc[:,1:]
 processed_sample_data = preprocess_data(sample_data)
 
 sample_input = [

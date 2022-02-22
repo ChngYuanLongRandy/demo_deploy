@@ -1,4 +1,4 @@
-from typing import List, Optional
+from typing import List, Optional, Tuple
 
 import pandas as pd
 from pydantic import BaseModel, ValidationError
@@ -27,8 +27,10 @@ class multiple_inputSchema(BaseModel):
     inputs: List[inputSchema]
 
 
-def api_input_validation(input_data: pd.DataFrame) -> [pd.DataFrame, Optional[dict]]:
-    print('Entering api input validation')
+def api_input_validation(
+    input_data: pd.DataFrame,
+) -> Tuple[pd.DataFrame, Optional[dict]]:
+    print("Entering api input validation")
 
     errors = None
 

@@ -1,9 +1,8 @@
 """Contains function to return prediction of input."""
-import pandas as pd
 
 from src.config.settings import PIPELINE_PATH, config
 from src.preprocessing import datamanager, validation
-import typing as t
+
 
 def make_prediction_inputs(input_data: list, proba=False) -> int:
     """
@@ -71,7 +70,8 @@ def make_prediction_inputs_api(input_data: list, proba=False) -> dict:
 
     return results
 
-def make_prediction_inputs_api_dict(input_data: dict , proba=False) -> dict:
+
+def make_prediction_inputs_api_dict(input_data: dict, proba=False) -> dict:
     """
     Load pipeline and preprocess input from API then predict.
     The inputs will be similar to what is in the original training set with
@@ -109,4 +109,3 @@ def make_prediction_inputs_api_dict(input_data: dict , proba=False) -> dict:
             results["Prediction"] = prediction
 
     return results
-

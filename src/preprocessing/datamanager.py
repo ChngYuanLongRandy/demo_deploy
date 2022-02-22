@@ -34,6 +34,9 @@ def preprocess_data(df: pd.DataFrame) -> pd.DataFrame:
     :param df: list of input conforming with the columns of the database
     :return: Processed pandas dataframe
     """
+    # rename columns
+    df.columns = config.modelConfig.renamed_features
+
     df.drop(columns=["ID", "Favorite color"], inplace=True)
 
     bound_numerical_features(df)
@@ -41,11 +44,11 @@ def preprocess_data(df: pd.DataFrame) -> pd.DataFrame:
     df.Smoke = df.Smoke.replace("NO", "No")
     df.Smoke = df.Smoke.replace("YES", "Yes")
     df.Age = np.where(df.Age < 0, -df.Age, df.Age)
-    df["Ejection Fraction"] = (
-        df["Ejection Fraction"].replace("L", "Low").replace("N", "Normal")
+    df["Ejection_Fraction"] = (
+        df["Ejection_Fraction"].replace("L", "Low").replace("N", "Normal")
     )
-    df["Ejection Fraction"] = (
-        df["Ejection Fraction"]
+    df["Ejection_Fraction"] = (
+        df["Ejection_Fraction"]
         .replace("High", "Normal")
         .replace("Normal", "Normal-High")
     )
@@ -65,6 +68,12 @@ def preprocess_data_fromapi(df: pd.DataFrame) -> pd.DataFrame:
     :param df: list of input conforming with the columns of the database
     :return: Processed pandas dataframe
     """
+
+    # rename columns
+    renamed_features = config.modelConfig.renamed_features
+    renamed_features = renamed_features.remove(config.modelConfig.target)
+    df.columns = renamed_features
+
     df.drop(columns=["ID", "Favorite color"], inplace=True)
 
     bound_numerical_features(df)
@@ -72,11 +81,11 @@ def preprocess_data_fromapi(df: pd.DataFrame) -> pd.DataFrame:
     df.Smoke = df.Smoke.replace("NO", "No")
     df.Smoke = df.Smoke.replace("YES", "Yes")
     df.Age = np.where(df.Age < 0, -df.Age, df.Age)
-    df["Ejection Fraction"] = (
-        df["Ejection Fraction"].replace("L", "Low").replace("N", "Normal")
+    df["Ejection_Fraction"] = (
+        df["Ejection_Fraction"].replace("L", "Low").replace("N", "Normal")
     )
-    df["Ejection Fraction"] = (
-        df["Ejection Fraction"]
+    df["Ejection_Fraction"] = (
+        df["Ejection_Fraction"]
         .replace("High", "Normal")
         .replace("Normal", "Normal-High")
     )
@@ -84,6 +93,7 @@ def preprocess_data_fromapi(df: pd.DataFrame) -> pd.DataFrame:
     df["BMI"] = (df.Weight / df.Height / df.Height) * 10000
 
     return df
+
 
 def preprocess_data_fromapi_dict(df: dict) -> pd.DataFrame:
     """
@@ -93,6 +103,12 @@ def preprocess_data_fromapi_dict(df: dict) -> pd.DataFrame:
     :return: Processed pandas dataframe
     """
     df = pd.DataFrame([df], columns=df.keys())
+
+    # rename columns
+    renamed_features = config.modelConfig.renamed_features
+    renamed_features = renamed_features.remove(config.modelConfig.target)
+    df.columns = renamed_features
+
     df.drop(columns=["ID", "Favorite color"], inplace=True)
 
     bound_numerical_features(df)
@@ -100,11 +116,11 @@ def preprocess_data_fromapi_dict(df: dict) -> pd.DataFrame:
     df.Smoke = df.Smoke.replace("NO", "No")
     df.Smoke = df.Smoke.replace("YES", "Yes")
     df.Age = np.where(df.Age < 0, -df.Age, df.Age)
-    df["Ejection Fraction"] = (
-        df["Ejection Fraction"].replace("L", "Low").replace("N", "Normal")
+    df["Ejection_Fraction"] = (
+        df["Ejection_Fraction"].replace("L", "Low").replace("N", "Normal")
     )
-    df["Ejection Fraction"] = (
-        df["Ejection Fraction"]
+    df["Ejection_Fraction"] = (
+        df["Ejection_Fraction"]
         .replace("High", "Normal")
         .replace("Normal", "Normal-High")
     )
@@ -112,6 +128,7 @@ def preprocess_data_fromapi_dict(df: dict) -> pd.DataFrame:
     df["BMI"] = (df.Weight / df.Height / df.Height) * 10000
 
     return df
+
 
 def load_from_database(db_path: str) -> pd.DataFrame:
     """
@@ -124,7 +141,7 @@ def load_from_database(db_path: str) -> pd.DataFrame:
 
     query = """SELECT * FROM SURVIVE"""
     df: pd.DataFrame = pd.read_sql(query, con)
-
+    print(f"columns of df is {df.columns}")
     df_processed = preprocess_data(df)
     return df_processed
 
